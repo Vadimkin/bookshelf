@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block active_item %}now{% endblock %}
+{% block menu %}{% include "includes/menu.html" with active_tab='now' %}{% endblock %}
+{% block title %}Что я хочу читаю{% endblock %}
+{% block action %}Что <a href="/">я</a> сейчас читаю{% endblock %}
+
+{% block content %}
+<div class="books cf">
+	{% for book in object_list %} 
+		<div class="books-one {% if book.favorite %}books-fav{% endif %}" data-id="{{book.id}}">
+			<div class="books-pic" style="background-image:url('{{ MEDIA_URL }}{{book.book_pic}}')"></div>
+			<div class="books-additional">
+				<div class="books-title">{{book.title}}</div>
+				<div class="books-author">{{book.author}}</div>
+			</div>
+		</div>
+	{% endfor %}
+</div>
+{% endblock %}

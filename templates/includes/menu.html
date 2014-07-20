@@ -1,0 +1,5 @@
+{% load staticfiles %}
+{% if active_tab != 'now' %}<a href='{% url 'now_reading' %}' class="header-button animate">Сейчас читаю</a>{% endif %}
+{% if active_tab != 'want' %}<a href='{% url 'want_reading' %}' class="header-button animate">Хочу прочитать</a>{% endif %}
+{% if active_tab != 'main' %}<a href='/' class="header-button animate">Прочитал</a>{% endif %}
+{% if active_tab == 'main' %}<span class="header-button header-button__fav animate filter" data-filter=".books-fav">Избранное</span>{% endif %}
