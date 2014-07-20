@@ -1,0 +1,32 @@
+@media (-webkit-min-device-pixel-ratio: 2){ 
+    .header-logo { background: url('../img/logo-retina.png') no-repeat; background-size: 70px 70px; }
+}
+
+
+@media screen and (max-width: 320px) { 
+	.header { height: 100px; }
+		.header-title { font-size: 20px; line-height: 100px; margin-top: 0px; }
+		.header-buttons { display: none; }
+}
+
+@media screen and (max-width: 640px) { 
+	.header { height: 150px; }
+		.header-title { font-size: 30px; line-height: 150px; margin-top: 0px; }
+		.header-buttons { display: none; }
+	.books-one { width: 60%; margin: 0 20% 60px; }
+
+	.md-bookImg { display: none; }
+	.md-bookInfo { width: 80%; margin: 4% 10%;}
+	.md-bookInfo-date { display: none; }
+}
+
+@media screen and (min-width: 641px) and (max-width: 800px) { 
+	.header { height: 200px; }
+		.header-title { font-size: 40px; line-height: 40px; margin-top: 100px; }
+	.books-one { width: 28%; margin: 0 2.66666% 60px; }
+}
+
+@media screen and (min-width: 801px) and (max-width: 1024px) { 
+	.header-title { font-size: 60px; line-height: 71px; }
+	.books-one { width: 25%; margin: 0 4.16% 60px; }
+}
