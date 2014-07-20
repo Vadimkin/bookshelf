@@ -11,19 +11,19 @@ class IndexView(generic.ListView):
     template_name = 'books/index.html'
 
     def get_queryset(self):
-    	return Book.objects.all()
+    	return Book.objects.filter(action=1)
 
-class WantReadingView(generic.ListView):
+class WantReadView(generic.ListView):
     template_name = 'books/want.html'
 
     def get_queryset(self):
-    	return Book.objects.all()
+    	return Book.objects.filter(action=2)
 
 class NowReadingView(generic.ListView):
     template_name = 'books/now.html'
 
     def get_queryset(self):
-    	return Book.objects.all()
+    	return Book.objects.filter(action=3)
 
 class AjaxView(generic.View):
 	def get(self, request, *args, **kwargs):
