@@ -3,4 +3,4 @@ settings.py
 *.json
 *~
 DEADJOE
-media/temp
+media/
