@@ -40,11 +40,24 @@ $(document).ready(function(){
 	});
 
 	$('.books-one').on('click', function(){
+		window.location.hash = "#/" + $(this).data('id');
+		checkLocation();
+
+		return false;
+	});
+
+	checkLocation();
+	
+});
+
+function checkLocation() {
+	if(window.location.hash != '') {
 		$modalOverlay = $('.md-overlay');
 		$modal = $('.md-modal');
 		$closeButton = $('.md-close');
 
-		var bookId = $(this).data('id');
+		var bookId = window.location.hash;
+		bookId = bookId.substr(2, bookId.length);
 
 		$.ajax({
 			type: "GET",
@@ -53,7 +66,6 @@ $(document).ready(function(){
 			success: function(result){
 				
 				if(result.status == 'ok') {
-					window.location.hash = "#/" + result.id;
 					$modal.find('.md-bookImg').css('backgroundImage', 'url('+result.pic+')');
 					$modal.find('.md-bookInfo-date').html(result.date);
 					$modal.find('.md-bookInfo-title').html(result.title);
@@ -68,24 +80,27 @@ $(document).ready(function(){
 						$modal.addClass('md-show');
 						$('body').addClass('modal-on');
 					}
+				} else {
+					alert("Нет такой записи");
+
+					var scr = document.body.scrollTop; // Sorry for this dirty fix :-(
+					window.location.href = '#';
+					document.body.scrollTop = scr;
 				}
 				
 			}
 		});
 
-		$($modalOverlay).on('click', function(){
+		$($modalOverlay, $closeButton).on('click', function(){
+			var scr = document.body.scrollTop; // Sorry for this dirty fix :-(
+			window.location.href = '#';
+			document.body.scrollTop = scr;
+
 			$modal.removeClass('md-show');
 			$('body').removeClass('modal-on');
 		});
-
-		$closeButton.on('click', function(){
-			$modal.removeClass('md-show');
-			$('body').removeClass('modal-on');
-		});
-
-		return false;
-	});
-});
+	}
+}
 
 $.fn.is_on_screen = function(){
     var win = $(window);
