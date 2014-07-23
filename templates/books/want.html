@@ -6,15 +6,15 @@
 {% block action %}Что <a href="/">я</a> хочу прочитать{% endblock %}
 
 {% block content %}
-<div class="books cf">
+<div class="books cf"><!--
 	{% for book in object_list %} 
-		<div class="books-one {% if book.favorite %}books-fav{% endif %}" data-id="{{book.id}}">
+	--><div class="books-one {% if book.favorite %}books-fav{% endif %}" data-id="{{book.id}}">
 			<div class="books-pic" style="background-image:url('{{ MEDIA_URL }}{{book.book_pic}}')"></div>
 			<div class="books-additional">
 				<div class="books-title">{{book.title}}</div>
 				<div class="books-author">{{book.author}}</div>
 			</div>
-		</div>
+		</div><!--
 	{% endfor %}
-</div>
+--></div>
 {% endblock %}
