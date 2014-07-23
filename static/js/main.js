@@ -91,7 +91,16 @@ function checkLocation() {
 			}
 		});
 
-		$($modalOverlay, $closeButton).on('click', function(){
+		$($modalOverlay).on('click', function(){
+			var scr = document.body.scrollTop; // Sorry for this dirty fix :-(
+			window.location.href = '#';
+			document.body.scrollTop = scr;
+
+			$modal.removeClass('md-show');
+			$('body').removeClass('modal-on');
+		});
+
+		$closeButton.on('click', function(){
 			var scr = document.body.scrollTop; // Sorry for this dirty fix :-(
 			window.location.href = '#';
 			document.body.scrollTop = scr;
